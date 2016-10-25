@@ -56,5 +56,12 @@ public void deleteBook(int isbn) {
 		
 		
 	}
+public void editBook(Book book) {
+	Session session=sessionFactory.openSession();
+	session.update(book);
+	session.flush();
+	session.close();
+}
+
 
 }

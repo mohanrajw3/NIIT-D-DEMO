@@ -10,6 +10,6 @@
 <body>
 ISBN : ${bookObj.isbn } <br>
 TITLE : ${bookObj.title } <br>
-Price : ${bookObj.price } <br>
+
 </body>
 </html>

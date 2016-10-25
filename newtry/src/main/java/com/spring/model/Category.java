@@ -3,6 +3,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -10,13 +11,19 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="bookcategories")
-public class Category { // Category has list of Books
+public class Category { 
+	
 @Id
+	
 private int cid;
+
 @Column(name="category")
 private String categoryName;
+
 @OneToMany(mappedBy="category")
 List<Book> books;
+
+
 public int getCid() {
 	return cid;
 }

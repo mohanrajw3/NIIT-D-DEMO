@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page isELIgnored="false" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
+<%@ page isELIgnored="false"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -17,16 +20,30 @@
 <title>Insert title here</title>
 </head>
 <body>
-<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<ul class="nav navbar-nav ">
-				<li><a href="<c:url value="/home"/>">Home</a></li>
-				<li><a href="<c:url value="/about"/>">About us</a></li>
-				<li><a href="<c:url value="/admin/book/addBook"/>">Add New Book</a></li>
-				<li><a href="<c:url value="/getAllBooks"/>">Browse All Books</a></li>
-				</ul>
-				</div>
-				</nav>
-
+	<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav ">
+			<li><a href="<c:url value="/home"/>">Home</a></li>
+			<li><a href="<c:url value="/about"/>">About us</a></li>
+			
+			<!--  User has logged in  -->
+		<c:if test="${pageContext.request.userPrincipal.name!=null}" >
+		<security:authorize access="hasRole('ROLE_ADMIN')">
+				<li><a href="<c:url value="/admin/book/addBook"/>">Add New
+						Book</a></li>
+		</security:authorize>
+			<li><a href="<c:url value="/getAllBooks"/>">Browse All Books</a></li>		
+			<li><a>Welcome ${pageContext.request.userPrincipal.name }</a></li>
+			<li><a href="<c:url value="/j_spring_security_logout"></c:url>">logout</a></li>
+		</c:if >
+		
+		<!--  when the user not logged in -->
+		<c:if test="${pageContext.request.userPrincipal.name==null}">
+		<li><a href="<c:url value="login"></c:url>">login</a></li>
+		<li><a href="<c:url value="/customer/registration"></c:url>">Register</a>
+		</c:if>
+		</ul>
+	</div>
+	</nav>
 </body>
 </html>

@@ -14,20 +14,29 @@
 	<!--  http://localhost:8080/welcomehelloworld/admin/book/addBook -->
 	
 	<c:url value="/admin/book/addBook" var="url"></c:url> 
-	<form:form method="post" action="${url}" commandName="bookFormObj">
+	<form:form method="post" action="${url}" commandName="bookFormObj" enctype="multipart/form-data">
+   <tr><td><form:input type="file" path="bookImage" /></td></tr>
 		<table>
 		<tr>
+		<td><img src="<c:url value="/resources/images/DSC_0782.jpg"/>" width="40%"/></td>
+		</tr>
+		<tr>
+		
 			<td><form:label path="isbn"></form:label></td>
 			<td><form:hidden path="isbn" /></td>
         </tr>
         <tr>
         <td><form:label path="title">TITLE</form:label>  </td>
-        <td><form:input path="title"></form:input></td>
+        <td><form:input path="title"></form:input>
+        <form:errors path="title"></form:errors>
+       
 	    </tr>
 	     <tr>
         <td><form:label path="publication">PUBLICATION</form:label>  </td>
-        <td><form:input path="publication"></form:input></td>
+        <td><form:input path="publication"></form:input>
+        <form:errors path="publication"></form:errors>
 	    </tr>
+
 	     <tr>
         <td><form:label path="price">PRICE</form:label>  </td>
         <td><form:input path="price"></form:input></td>
