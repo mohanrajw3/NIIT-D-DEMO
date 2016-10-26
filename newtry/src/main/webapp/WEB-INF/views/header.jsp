@@ -32,7 +32,7 @@
 				<li><a href="<c:url value="/admin/book/addBook"/>">Add New
 						Book</a></li>
 		</security:authorize>
-			<li><a href="<c:url value="/getAllBooks"/>">Browse All Books</a></li>		
+			<li><a href="<c:url value="/booksListAnguler"/>">Browse All Books</a></li>
 			<li><a>Welcome ${pageContext.request.userPrincipal.name }</a></li>
 			<li><a href="<c:url value="/j_spring_security_logout"></c:url>">logout</a></li>
 		</c:if >

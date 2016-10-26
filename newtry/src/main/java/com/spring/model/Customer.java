@@ -17,7 +17,17 @@ private int customerId;
 private String customerName;
 private String customerEmail;
 private String customerPhone;
+@OneToOne
+@JoinColumn(name="cartid")
+private Cart cart;
 
+
+public Cart getCart() {
+	return cart;
+}
+public void setCart(Cart cart) {
+	this.cart = cart;
+}
 @OneToOne(cascade=CascadeType.ALL)
 @JoinColumn(name="usersid")
 private Users users;
